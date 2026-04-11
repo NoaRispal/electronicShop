@@ -1,0 +1,24 @@
+RewriteEngine On
+RewriteBase /electronicWebsiteProject/public/
+
+# Sécurité : Empêche de lister le contenu des dossiers 
+Options -Indexes
+
+# SEO : Redirection vers index.php pour les Friendly URLs [cite: 89]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L,QSA]
+
+# Sécurité : Bloquer l'accès aux fichiers sensibles [cite: 7, 102]
+<FilesMatch "\.(env|sql|log|ini)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquer l'accès au fichier de config
+<Files "db_config.php">
+    Require all denied
+</Files>
+
+# Pages d'erreur personnalisées
+ErrorDocument 404 /index.php?page=404
+ErrorDocument 403 /index.php?page=403
