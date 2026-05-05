@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container mb-4">
     <div class="row justify-content-center">
         <div class="col-12 text-center mb-2">
             <h1> Contact us </h1>
             <p> Something to ask ? Our team will answer it !</p>
         </div>
         <div class="col">
+            <h5 class="text-center"> Visit us in one of our physical store ! </h5>
             <div class="card">
                 <div class="card-body">
                     <!-- Interactive Map with Leaflet.js -->
@@ -14,6 +15,7 @@
             </div>
         </div>
         <div class="col">
+            <h5 class="text-center"> Ask your question directly ! </h5>
             <div class="card">
                 <div class="card-body">
                     <!-- Form -->
@@ -30,7 +32,7 @@
                         <div class="col-12">
                             <label for="subject" class="form-label">Subject</label>
                             <select id="subject" class="form-select">
-                                <option selected>Your Question</option>
+                                <option selected>What is your Question</option>
                                 <option>After-sales service</option>
                                 <option>Claim</option>
                                 <option>Others</option>
@@ -38,7 +40,7 @@
                         </div>
                         <div class="col-12">
                             <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                            <textarea class="form-control" id="message" rows="5" placeholder="How can we help you ?" required></textarea>
                         </div>
                         <div class="col-12 mt-4">
                             <button type="submit" class="btn btn-primary btn-lg w-100">Send</button>

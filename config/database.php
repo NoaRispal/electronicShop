@@ -4,7 +4,8 @@ class Transaction {
     private $pdo;
 
     function __construct(){
-        require_once 'db_config.php';
+        global $bdd_dsn, $bdd_user, $bdd_pass;
+        require_once __DIR__ . '/db_config.php';
         try{
             $options = 
             [

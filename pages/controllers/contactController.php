@@ -16,8 +16,8 @@ if ($action=="get_stores"){
     if (ob_get_length()) ob_clean();
     header('Content-Type: application/json');
     echo json_encode($stores_data);
-    exit; // Exit so that there is no HTML 
+    exit(); // Exit so that there is no HTML 
 }
 
-include __DIR__ . '/../views/contact.php';
+include __DIR__ . '../../views/contact.php';
 ?>

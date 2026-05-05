@@ -1,10 +1,22 @@
-<div class="container">
-    <form action="/pages/login.php" method="post">
-        <label for="id">Enter mobile number or email</label><br>
-        <input type="text" id="id" name="id"><br>
-        <label for="pwd">Password</label><br>
-        <input type="password" id="pwd" name="pwd"><br><br>
-        <input type="submit" value="Submit"><br>
-        <a href="./signup.html">Sign-up</a>
-    </form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2 class="text-center">Log In</h2>
+            <?php if($error) echo "<div class='alert alert-danger'>$error</div>";
+            if (isset($_GET['reset']) && $_GET['reset']==="success") echo "<div class='alert alert-success'>Password reset !</div>" ?>
+            <form method="POST" action="index.php?page=signin">
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Log In</button>
+            </form>
+            <p class="mt-3 text-center">No account ? <a href="index.php?page=register">Create one</a></p>
+            <p class="mt-3 text-center"><a href="index.php?page=forgot_password">Forgot password</a></p>
+        </div>
+    </div>
 </div>

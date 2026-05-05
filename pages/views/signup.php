@@ -1,12 +1,24 @@
-<div class="container">
-    <p>Sign-Up</p>
-    <form action="/pages/createAccount.php" method="post">
-        <label for="id">Enter mobile number or email</label><br>
-        <input type="text" id="id" name="id"><br>
-        <label for="pwd">Password</label><br>
-        <input type="password" id="pwd" name="pwd"><br>
-        <label for="pwdConfirm">Confirm Password</label><br>
-        <input type="password" id="pwdConfirm" name="pwdConfirm"><br><br>
-        <input type="submit" value="Submit"><br>
-    </form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2 class="text-center">Inscription</h2>
+            <?php if($message) echo "<div class='alert alert-info'>$message</div>"; ?>
+            <form method="POST" action="index.php?page=register">
+                <div class="mb-3">
+                    <label>Full name</label>
+                    <input type="text" name="full_name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Create my account</button>
+            </form>
+            <p class="mt-3 text-center">Have an account ? <a href="index.php?page=signin">Log In</a></p>
+        </div>
+    </div>
 </div>

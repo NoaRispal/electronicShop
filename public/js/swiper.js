@@ -21,7 +21,7 @@ const productsSwiper = new Swiper(".productsSwiper", {
     slidesPerView: 5,
     spaceBetween: 20,
     slidesPerGroup: 1,
-    loop: true,
+    loop: false,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
