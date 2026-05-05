@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electronic Store</title>
     <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Swiper.js CDN pour les carrousels  -->
@@ -27,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between fixed-top">
             <!-- Logo -->
             <a class= "nav-brand" href="index.php?page=home" id="logo-container">
-                <img src="images/logo.png" id="logo" style="filter: invert(1); -webkit-filter: invert(1);">
+                <img src="images/logo.png" id="logo"">
             </a>
             <!-- Nav Bar for mobile  -->
             <button class="navbar-toggler me-2 order-0" type="button" 
