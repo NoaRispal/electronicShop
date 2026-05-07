@@ -57,7 +57,7 @@
     <div class="header">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between fixed-top">
             <!-- Logo -->
-            <a class= "nav-brand" href="<?php echo BASE_URL; ?>home" id="logo-container">
+            <a class= "navbar-brand" href="<?php echo BASE_URL; ?>home" id="logo-container">
                 <img src="<?= BASE_URL ?>images/logo.png" id="logo" alt="Electronic Store Logo">
             </a>
             <!-- Nav Bar for mobile  -->
@@ -70,7 +70,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Nav Bar  -->
-            <div class="collapse navbar-collapse d-flex flex-column flex-md-row" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>home">Home</a></li>
                     <li class="nav-item active"><a class="nav-link" href="<?php echo BASE_URL; ?>products">Products</a></li>
@@ -84,11 +84,11 @@
                     <div class="search_results_dropdown list-group position-absolute shadow" style="display:none; top: 100%; left: 0; width: 100%; z-index: 1000;"></div>
                 </form>
                 <!-- Sign In button  -->
-                <ul class="navbar-nav order-1 order-md-2 align-items-center">
+                <ul class="navbar-nav order-1 order-md-2">
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <!-- Cart -->
                         <li class="nav-item">
-                            <a class="nav-link position-relative" href="<?php echo BASE_URL; ?>cart">
+                            <a class="nav-link position-relative d-inline-block" href="<?php echo BASE_URL; ?>cart">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                                 </svg>
