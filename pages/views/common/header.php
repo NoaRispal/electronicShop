@@ -114,10 +114,12 @@
                                 <?= (isset($_SESSION['user_name'])) ? htmlspecialchars($_SESSION['user_name']) : "User" ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="navbarDropdown">
-                                <!-- Option Panier dans le menu déroulant -->
+                                <?php if(isset($_SESSION['user_role']) && $_SESSION['user_role']==='admin'): ?>
+                                <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>admin">Admin Dashboard</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <?php endif; ?>
                                 <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>cart">My Cart</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <!-- Logout[cite: 1] -->
                                 <li><a class="dropdown-item text-danger" href="<?php echo BASE_URL; ?>logout">Logout</a></li>
                             </ul>
                         </li>

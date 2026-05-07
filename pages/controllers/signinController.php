@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     $tran= new Transaction();
-    $req = "SELECT id, password, full_name FROM users WHERE email = ?";
+    $req = "SELECT id, password, full_name,role FROM users WHERE email = ?";
     $ptstm = $tran->init_request($req);
     $res = $tran->make_request($ptstm,$email);
     $tran->close();
@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['full_name'];
+        $_SESSION['user_role'] = $user['role'];
         header("Location: ".BASE_URL."home");
         exit();
     } else {

@@ -1,3 +1,22 @@
+<!-- ====== FLASH ====== -->
+<?php 
+if (isset($_SESSION['flash'])){ 
+
+  $flashType = $_SESSION['flash_type'] ?? 'success';
+  $isDanger = $flashType === 'danger';
+  $bgColor  = $isDanger ? "#f8d7da" : "#d4edda";
+  $brColor  = $isDanger ? "#f5c6cb" : "#c3e6cb";
+  $txtColor = $isDanger ? "#721c24" : "#155724";
+}
+if (isset($_SESSION['flash'])): ?>
+  <div class="alert" style="padding: 15px; background-color: <?= $bgColor ?>; color: <?= $txtColor ?>; border: 1px solid <?= $brColor ?>; border-radius: 4px; margin-bottom: 20px;">
+    <?= htmlspecialchars($_SESSION['flash']); ?>
+  </div>
+    <?php 
+        unset($_SESSION['flash']); 
+    ?>
+<?php endif; ?>
+
 <?php include __DIR__ . '/common/header.php'; ?>
 <div class="p-5 mb-4 bg-light rounded-3 shadow-sm border">
     <div class="container-fluid py-5">

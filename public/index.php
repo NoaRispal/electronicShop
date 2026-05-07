@@ -87,6 +87,16 @@ switch($page) {
         }
         require_once '../pages/controllers/cartController.php';
         break;
+
+    case 'admin':
+        if (!isset($_SESSION['user_role']) && !($_SESSION['user_role']==='admin')){
+            $_SESSION['flash'] = "Access denied";
+            $_SESSION['flash_type'] = "danger";
+            header('Location: '.BASE_URL.' /home'); 
+            exit();
+        } 
+        require_once '../pages/controllers/adminController.php';
+        break;
         
     default:
         require_once '../pages/controllers/homeController.php';
