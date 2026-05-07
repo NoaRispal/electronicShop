@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }).addTo(map);
 
         // Add Marker on Map
-        fetch('index.php?page=contact&action=get_stores')
+        fetch(BASE_URL + 'contact/get_stores')
                 .then(response => response.json())
                 .then(data => {
                     data.forEach(store => {

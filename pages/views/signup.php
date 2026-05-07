@@ -1,9 +1,11 @@
+<?php include __DIR__ . '/common/header.php'; ?>
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-4">
             <h2 class="text-center">Inscription</h2>
             <?php if($message) echo "<div class='alert alert-info'>$message</div>"; ?>
-            <form method="POST" action="index.php?page=register">
+            <form method="POST" action="<?php echo BASE_URL; ?>register">
                 <div class="mb-3">
                     <label>Full name</label>
                     <input type="text" name="full_name" class="form-control" required>
@@ -18,7 +20,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Create my account</button>
             </form>
-            <p class="mt-3 text-center">Have an account ? <a href="index.php?page=signin">Log In</a></p>
+            <p class="mt-3 text-center">Have an account ? <a href="<?php echo BASE_URL; ?>signin">Log In</a></p>
         </div>
     </div>
 </div>

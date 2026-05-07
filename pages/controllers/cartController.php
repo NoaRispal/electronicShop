@@ -46,7 +46,7 @@ if ($action === 'add') {
 if ($action === 'remove') {
     $id = $_GET['id'] ?? null;
     if ($id) unset($_SESSION['cart'][$id]);
-    header("Location: index.php?page=cart");
+    header("Location: ".BASE_URL."cart");
     exit();
 }
 if ($action === 'view') {

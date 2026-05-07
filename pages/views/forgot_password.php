@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/common/header.php'; ?>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-5">
@@ -7,7 +8,7 @@
                     <p class="text-muted text-center">Enter your email to reset your account password.</p>
                     <?php if($error) echo "<div class='alert alert-danger'>$error</div>";?>
                     
-                    <form action="index.php?page=reset_request" method="POST">
+                    <form action="<?php echo BASE_URL; ?>reset_request" method="POST">
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
                             <input type="email" name="email" class="form-control" required placeholder="example@email.com">
@@ -16,7 +17,7 @@
                     </form>
                     
                     <div class="mt-3 text-center">
-                        <a href="index.php?page=signin">Back to Login</a>
+                        <a href="<?php echo BASE_URL; ?>signin">Back to Login</a>
                     </div>
                 </div>
             </div>

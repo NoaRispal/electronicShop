@@ -6,7 +6,11 @@ if (isset($_POST['query'])) {
     $query = $_POST['query'] ?? '';
 
     if (strlen($query) > 1) {
-        $req = "SELECT product_id, name, price, link_image FROM products WHERE name LIKE ? LIMIT 3";
+        $req = "SELECT p.product_id, p.name, p.price, p.link_image, c.category_name 
+                FROM products p
+                INNER JOIN categories c ON p.category_id = c.category_id 
+                WHERE p.name LIKE ? 
+                LIMIT 3";
         $ptstmt = $tran->init_request($req);
         $search_param = "%" . $query . "%";
         $res = $tran->make_request($ptstmt,$search_param);
@@ -14,8 +18,9 @@ if (isset($_POST['query'])) {
 
         if ($products) {
             foreach ($products as $p) {
+                $fullLink = BASE_URL . "products/" . rawurlencode($p['category_name']) . "/" . (int)$p['product_id'];
                 echo "
-                <a href='index.php?page=products&id=" . (int)$p['product_id'] . "' 
+                <a href='" . $fullLink . "'
                    class='list-group-item list-group-item-action border-0 d-flex align-items-center p-2'>
                     
                     <!-- Image : plus petite, entière et centrée dans son carré -->

@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/common/header.php'; ?>
 <div class="container mt-5 mb-5">
     <h2>Your Shopping Cart</h2>
     <table class="table align-middle">
@@ -28,7 +29,7 @@
                 <td><?= $qty ?></td>
                 <td><?= number_format($subtotal, 0) ?> $</td>
                 <td>
-                    <a href="index.php?page=cart&action=remove&id=<?= $id ?>" class="btn btn-sm btn-danger">Remove</a>
+                    <a href="<?php echo BASE_URL; ?>cart/remove/<?= $id ?>" class="btn btn-sm btn-danger">Remove</a>
                 </td>
             </tr>
             <?php endforeach; else: ?>

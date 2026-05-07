@@ -1,8 +1,7 @@
+<?php include __DIR__ . '/common/header.php'; ?>
 <!-- Search Bar -->
-
 <div class="searchBar d-flex justify-content-center align-items-center mt-5">
-    <form class="d-flex border-1 position-relative w-50" method="get" autocomplete="off">
-    <input type="hidden" name="page" value="products"> <!-- for page=products in the URL --> 
+    <form class="d-flex border-1 position-relative w-50" action="<?= BASE_URL ?>products" method="get" autocomplete="off">
         <input name="search" class="searchInput form-control me-sm-2 text-dark" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-light" type="submit">Search</button>
         
@@ -22,7 +21,7 @@
             <div class="swiper-slide">
                 <div class="card">
                     <div class="card-body d-flex justify-content-center align-items-center">
-                        <a href="index.php?page=products&category=<?= urlencode($catName) ?>" class="btn categoryBtn stretched-link"><?= $catName ?></a>
+                        <a href="<?php echo BASE_URL; ?>products/<?= rawurlencode($catName) ?>" class="btn categoryBtn stretched-link"><?= $catName ?></a>
                         <!-- url encode because some catName has special char like  "&" and we need the naviguator to undersand that it is not another parameter but the same -->
                     </div>
                 </div>
@@ -34,19 +33,21 @@
     </div>
     <hr>
 </div>
+
+<!-- Breadcrumb -->
 <div class="container mt-4 mb-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-light p-3 rounded border shadow-sm">
             <li class="breadcrumb-item">
-                <a href="index.php?page=home" class="text-primary text-decoration-none">
+                <a href="<?php echo BASE_URL; ?>home" class="text-primary text-decoration-none">
                     <i class="bi bi-house-door-fill"></i> Home
                 </a>
             </li>
             
-            <?php if ($_GET['page'] === 'products'): ?>
+            <?php if ($page === 'products'): ?>
                 <li class="breadcrumb-item <?= !isset($category) ? 'active' : '' ?>">
                     <?php if (isset($category)): ?>
-                        <a href="index.php?page=products">Products</a>
+                        <a href="<?php echo BASE_URL; ?>products">Products</a>
                     <?php else: ?>
                         Products
                     <?php endif; ?>
@@ -72,7 +73,7 @@
     <div class="d-flex justify-content-center align-items-center">
         <div class="card">
             <div class="card-body d-flex justify-content-center align-items-center">
-                <a href="index.php?page=products&category=<?= urlencode($catName) ?>" class="btn categoryBtn stretched-link"><?= $catName ?></a>
+                <a href="<?php echo BASE_URL; ?>products/<?= rawurlencode($catName) ?>" class="btn categoryBtn stretched-link"><?= $catName ?></a>
             </div>
         </div>
     </div>
@@ -81,13 +82,13 @@
             <?php foreach ($products as $p): ?>
                 <div class="swiper-slide">
                     <div class="card h-200 shadow-sm">
-                        <img src="images/item1.jpg" class="card-img-top" alt="...">
+                        <img src="<?=BASE_URL. $p['link_image']?>" class="card-img-top" alt="<?= htmlspecialchars($p['name']) ?> - Electronic Store">
                         <div class="card-body d-flex flex-column">
                             <h6 class="card-title text-truncate"><?= $p['name'] ?></h6>
                             <p class="fw-bold text-primary mb-1"><?= number_format($p['price'], 2) ?> €</p>
                             
                             <div class="d-flex gap-2 mt-auto pt-2">
-                                <a href="index.php?page=products&id=<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
+                                <a href="<?php echo BASE_URL; ?>products/<?=rawurlencode($catName)?>/<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
                                 <button onclick="addToCart(<?= $p['product_id'] ?>)" class="btn btn-primary btn-sm px-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                                         <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
@@ -121,17 +122,11 @@
         <aside class="col-md-3 mb-4">
             <div class="card shadow-sm bg-light p-3">
                 <h5 class="mb-3">Filters</h5>
-                <form method="GET" action="index.php?page=products&category=<?=$category?>">
-                    <!-- Garder le contexte -->
-                    <input type="hidden" name="page" value="products">
-                    <?php if(isset($_GET['category'])): ?>
-                        <input type="hidden" name="category" value="<?= $_GET['category'] ?>">
-                    <?php endif; ?>
-
+                <form method="GET" action="<?php echo BASE_URL; ?>products/<?=rawurlencode($category)?>">
                     <div class="mb-3">
                         <label class="form-label small">Sort by</label>
                         <select name="sort" class="form-select form-select-sm bg-light border-1">
-                            <option value="default" <?= $sort_order == 'default' ? 'selected' : '' ?>>Best-seller</option>
+                            <option value="default" <?= $sort_order == 'best-seller' ? 'selected' : '' ?>>Best-seller</option>
                             <option value="price_asc" <?= $sort_order == 'price_asc' ? 'selected' : '' ?>>Price: Low to High</option>
                             <option value="price_desc" <?= $sort_order == 'price_desc' ? 'selected' : '' ?>>Price: High to Low</option>
                             <option value="alpha_asc" <?= $sort_order == 'alpha_asc' ? 'selected' : '' ?>>Name: A-Z</option>
@@ -150,13 +145,13 @@
                 <?php foreach ($all_products as $p): ?>
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="card h-100 shadow-sm">
-                            <img src="images/item1.jpg" class="card-img-top" alt="...">
+                            <img src="<?=BASE_URL .$p['link_image']?>" class="card-img-top" alt="<?= htmlspecialchars($p['name']) ?> - Electronic Store">
                             <div class="card-body d-flex flex-column">
                                 <h6 class="card-title text-truncate"><?= $p['name'] ?></h6>
                                 <p class="fw-bold text-primary mb-1"><?= number_format($p['price'], 2) ?> €</p>
                                 
                                 <div class="d-flex gap-2 mt-auto pt-2">
-                                    <a href="index.php?page=products&id=<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
+                                    <a href="<?php echo BASE_URL; ?>/products/<?=$category?>/<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
                                     <button onclick="addToCart(<?= $p['product_id'] ?>)" class="btn btn-primary btn-sm px-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                                             <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
@@ -176,19 +171,19 @@
                 <ul class="pagination justify-content-center">
                     <!-- Previous -->
                     <li class="page-item <?= ($current_page <= 1) ? 'disabled' : '' ?>">
-                        <a class="page-link" href="index.php?page=products&category=<?= $category ?>&p=<?= $current_page - 1 ?>&sort=<?= $sort_order ?>">Previous</a>
+                        <a class="page-link" href="<?= BASE_URL ?>products/<?= rawurlencode($category) ?>?p=<?= $current_page - 1 ?>&sort=<?= $sort_order ?>">Previous</a>
                     </li>
 
                     <!-- List -->
                     <?php for($i = 1; $i <= $total_pages; $i++): ?>
                         <li class="page-item <?= ($current_page == $i) ? 'active' : '' ?>">
-                            <a class="page-link" href="index.php?page=products&category=<?= $category ?>&p=<?= $i ?>&sort=<?= $sort_order ?>"><?= $i ?></a>
+                            <a class="page-link" href="<?= BASE_URL ?>products/<?= rawurlencode($category) ?>?p=<?= $i ?>&sort=<?= $sort_order ?>"><?= $i ?></a>
                         </li>
                     <?php endfor; ?>
 
                     <!-- Next -->
                     <li class="page-item <?= ($current_page >= $total_pages) ? 'disabled' : '' ?>">
-                        <a class="page-link" href="index.php?page=products&category=<?= $category ?>&p=<?= $current_page + 1 ?>&sort=<?= $sort_order ?>">Next</a>
+                        <a class="page-link" href="<?= BASE_URL ?>products/<?= rawurlencode($category) ?>?p=<?= $current_page + 1 ?>&sort=<?= $sort_order ?>">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -203,14 +198,16 @@
     $current_page = isset($_GET['p']) ? (int)$_GET['p'] : 1;
     $search_query = $_GET['search'] ?? null; // On récupère le mot-clé s'il existe
     
-    // On génère une chaîne pour l'URL afin de ne pas la répéter partout
-    $url_params = "page=products";
-    if (isset($_GET['category'])) $url_params .= "&category=" . $_GET['category'];
-    if ($search_query) $url_params .= "&search=" . urlencode($search_query); //
+    $url_params = BASE_URL."products";
+    if (isset($_GET['category'])) $url_params .= urlencode($_GET['category']);
+    if ($search_query) {
+        $url_params .= "?search=" . urlencode($search_query)."&";
+    } else {
+        $url_params .= "&";
+    }
 ?>
 
 <div class="container mb-5 mt-4">
-    <!-- Affichage du titre dynamique -->
     <div class="mb-4">
         <?php if ($search_query): ?>
             <h3>Results for "<?= htmlspecialchars($search_query) ?>"</h3>
@@ -223,11 +220,11 @@
         <aside class="col-md-3 mb-4">
             <div class="card shadow-sm bg-light p-3">
                 <h5 class="mb-3">Filters</h5>
-                <form method="GET" action="index.php">
+                <form method="GET" action="<?= BASE_URL ?>products/<?= rawurlencode($p['category_name']) ?>">
                     <input type="hidden" name="page" value="products">
                     
                     <?php if(isset($_GET['category'])): ?>
-                        <input type="hidden" name="category" value="<?= $_GET['category'] ?>">
+                        <input type="hidden" name="category" value="<?=htmlspecialchars($_GET['category']) ?>">
                     <?php endif; ?>
 
                     <?php if($search_query): ?>
@@ -258,13 +255,13 @@
                     <?php foreach ($all_products as $p): ?>
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 shadow-sm"> 
-                                <img src="images/item1.jpg" class="card-img-top" alt="...">
+                                <img src="<?=BASE_URL.$p['link_image']?>" class="card-img-top" alt="<?= htmlspecialchars($p['name']) ?> - Electronic Store">
                                 <div class="card-body d-flex flex-column">
                                     <h6 class="card-title text-truncate"><?= $p['name'] ?></h6>
                                     <p class="fw-bold text-primary mb-1"><?= number_format($p['price'], 2) ?> €</p>
                                     
                                     <div class="d-flex gap-2 mt-auto pt-2">
-                                        <a href="index.php?page=products&id=<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
+                                        <a href="<?php echo BASE_URL; ?>products/<?=$p['category_name']?>/<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
                                         <button onclick="addToCart(<?= $p['product_id'] ?>)" class="btn btn-primary btn-sm px-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                                                 <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
@@ -285,19 +282,19 @@
                 <ul class="pagination justify-content-center">
                     <!-- Previous -->
                     <li class="page-item <?= ($current_page <= 1) ? 'disabled' : '' ?>">
-                        <a class="page-link" href="index.php?<?= $url_params ?>&p=<?= $current_page - 1 ?>&sort=<?= $sort_order ?>">Previous</a>
+                        <a class="page-link" href="<?= $url_params ?>p=<?= $current_page - 1 ?>&sort=<?= $sort_order ?>">Previous</a>
                     </li>
 
                     <!-- List -->
                     <?php for($i = 1; $i <= $total_pages; $i++): ?>
                         <li class="page-item <?= ($current_page == $i) ? 'active' : '' ?>">
-                            <a class="page-link" href="index.php?<?= $url_params ?>&p=<?= $i ?>&sort=<?= $sort_order ?>"><?= $i ?></a>
+                            <a class="page-link" href="<?= $url_params ?>p=<?= $i ?>&sort=<?= $sort_order ?>"><?= $i ?></a>
                         </li>
                     <?php endfor; ?>
 
                     <!-- Next -->
                     <li class="page-item <?= ($current_page >= $total_pages) ? 'disabled' : '' ?>">
-                        <a class="page-link" href="index.php?<?= $url_params ?>&p=<?= $current_page + 1 ?>&sort=<?= $sort_order ?>">Next</a>
+                        <a class="page-link" href="<?= $url_params ?>p=<?= $current_page + 1 ?>&sort=<?= $sort_order ?>">Next</a>
                     </li>
                 </ul>
             </nav>

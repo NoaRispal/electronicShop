@@ -1,18 +1,19 @@
+<?php include __DIR__ . '/common/header.php'; ?>
 <div class="container mt-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-light p-3 rounded border shadow-sm">
             <li class="breadcrumb-item">
-                <a href="index.php?page=home" class="text-primary text-decoration-none">
+                <a href="<?php echo BASE_URL; ?>home" class="text-primary text-decoration-none">
                     <i class="bi bi-house-door-fill"></i> Home
                 </a>
             </li>
             
             <li class="breadcrumb-item">
-                <a href="index.php?page=products" class="text-primary text-decoration-none">Products</a>
+                <a href="<?php echo BASE_URL; ?>products" class="text-primary text-decoration-none">Products</a>
             </li>
 
             <li class="breadcrumb-item">
-                <a href="index.php?page=products&category=<?=htmlspecialchars($item['catName'])?>" class="text-primary text-decoration-none"> <?= htmlspecialchars($item['catName']) ?></a>
+                <a href="<?php echo BASE_URL; ?>products/<?=htmlspecialchars($item['catName'])?>" class="text-primary text-decoration-none"> <?= htmlspecialchars($item['catName']) ?></a>
                
             </li>
             <li class="breadcrumb-item active"><?php echo $item['name']; ?></li>
@@ -21,8 +22,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <img src="images/item1.jpg" class="img-fluid rounded" alt="Image">
-            <!-- <img src=<?= $item["link"]?> class="img-fluid rounded" alt="Image"> -->
+            <img src=<?= BASE_URL.$item["link_image"]?> class="img-fluid rounded" alt="<?= htmlspecialchars($item['name']) ?> - Electronic Store">
         </div>
         <div class="col-md-6">
             <h1><?php echo $item['name']; ?></h1>

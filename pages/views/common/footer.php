@@ -4,14 +4,14 @@
                 <div class="row"> 
                     <div class="col-md-4 mb-3 mb-md-0">
                         <h5 class="text-light fw-bold">Physical store</h5>
-                        <a href="index.php?page=contact" class="text-decoration-none text-reset text-shadow mb-0">Stores in District 10, HCMC</a><br>
+                        <a href="<?php echo BASE_URL; ?>contact" class="text-decoration-none text-reset text-shadow mb-0">Stores in District 10, HCMC</a><br>
                         <p>Opening hours: 9h-17h (6/7)</p>
                     </div>
                     <div class="col-md-4 mb-3 mb-md-0">
                         <h5 class="text-light fw-bold">To contact us</h5>
                         <p class="mb-0">
-                            <a href="index.php?page=contact" class="text-decoration-none text-light">Message</a><br>
-                            <a href="index.php?page=contact" class="text-decoration-none text-light">Mail</a><br>
+                            <a href="<?php echo BASE_URL; ?>contact" class="text-decoration-none text-light">Message</a><br>
+                            <a href="<?php echo BASE_URL; ?>contact" class="text-decoration-none text-light">Mail</a><br>
                         </p>
                     </div>
                     <div class="col-md-4 ">

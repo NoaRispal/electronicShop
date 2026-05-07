@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['reset_user_id'])) {
     $tran->close();
 
     unset($_SESSION['reset_user_id']);
-    header("Location: index.php?page=signin&reset=success");
+    header("Location: ".BASE_URL."signin&reset=success");
     exit();
 }
 

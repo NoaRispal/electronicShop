@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const dropdown = this.parentElement.querySelector('.search_results_dropdown')
 
             if (query.length > 1) {
-                fetch('index.php?action=item_search', {
+                fetch(BASE_URL +'item_search', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: 'query=' + encodeURIComponent(query)

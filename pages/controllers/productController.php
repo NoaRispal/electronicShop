@@ -27,8 +27,11 @@ if (isset($search)){
     $total_pages = ceil($total_items / $limit);
     //
 
-    $req = "SELECT * FROM products WHERE name LIKE ? OR description LIKE ? 
-            LIMIT $limit OFFSET $offset";
+    $req = "SELECT p.*, c.category_name
+        FROM products p
+        INNER JOIN categories c ON p.category_id = c.category_id
+        WHERE p.name LIKE ? OR p.description LIKE ? 
+        LIMIT $limit OFFSET $offset";
     $param = "%".$search."%";
     $ptstmt = $tran->init_request($req);
     $res = $tran->make_request($ptstmt,$param,$param);

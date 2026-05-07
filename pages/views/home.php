@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/common/header.php'; ?>
 <div class="p-5 mb-4 bg-light rounded-3 shadow-sm border">
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">ElectronicStore HCMC</h1>
@@ -43,13 +44,13 @@
             <?php foreach ($top_products as $p): ?>
                 <div class="swiper-slide">
                     <div class="card h-200 shadow-sm">
-                        <img src="images/item1.jpg" class="card-img-top" alt="...">
+                        <img src="<?=BASE_URL.$p['link_image']?>" class="card-img-top" alt="<?= htmlspecialchars($p['name']) ?> - Electronic Store">
                         <div class="card-body d-flex flex-column">
                             <h6 class="card-title text-truncate"><?= $p['name'] ?></h6>
                             <p class="fw-bold text-primary mb-1"><?= number_format($p['price'], 2) ?> €</p>
                             
                             <div class="d-flex gap-2 mt-auto pt-2">
-                                <a href="index.php?page=products&id=<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
+                                <a href="<?= BASE_URL ?>/products/<?=$p['category_name']?>/<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
                                 <button onclick="addToCart(<?= $p['product_id'] ?>)" class="btn btn-primary btn-sm px-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                                         <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
@@ -73,13 +74,13 @@
             <?php foreach ($new_products as $p): ?>
                 <div class="swiper-slide">
                     <div class="card h-200 shadow-sm">
-                        <img src="images/item1.jpg" class="card-img-top" alt="...">
+                        <img src="<?=BASE_URL.$p['link_image']?>" class="card-img-top" alt="<?= htmlspecialchars($p['name']) ?> - Electronic Store">
                         <div class="card-body d-flex flex-column">
                             <h6 class="card-title text-truncate"><?= $p['name'] ?></h6>
                             <p class="fw-bold text-primary mb-1"><?= number_format($p['price'], 2) ?> €</p>
                             
                             <div class="d-flex gap-2 mt-auto pt-2">
-                                <a href="index.php?page=products&id=<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
+                                <a href="<?= BASE_URL ?>/products/<?=$p['category_name']?>/<?=$p["product_id"]?>" class="btn btn-outline-secondary btn-sm flex-grow-1">Details</a>
                                 <button onclick="addToCart(<?= $p['product_id'] ?>)" class="btn btn-primary btn-sm px-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                                         <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
@@ -105,7 +106,7 @@
                 <div class="swiper-slide">
                     <div class="card">
                         <div class="card-body d-flex justify-content-center align-items-center">
-                            <a href="index.php?page=products&category=<?= urlencode($catName) ?>" class="btn categoryBtn stretched-link"><?= $catName ?></a>
+                            <a href="<?php echo BASE_URL; ?>products/<?= rawurlencode($catName) ?>" class="btn categoryBtn stretched-link"><?= $catName ?></a>
                             <!-- url encode because some catName has special char like  "&" and we need the naviguator to undersand that it is not another parameter but the same -->
                         </div>
                     </div>

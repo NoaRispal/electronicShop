@@ -1,5 +1,5 @@
 function addToCart(productId) {
-    fetch('index.php?page=cart&action=add&id=' + productId, {
+    fetch(BASE_URL + 'cart/add/' + productId, {
         headers: {
             'X-Requested-With': 'XMLHttpRequest' // Pour que PHP détecte l'AJAX
             }

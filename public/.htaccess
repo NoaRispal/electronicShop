@@ -4,12 +4,16 @@ RewriteBase /electronicWebsiteProject/public/
 # Sécurité : Empêche de lister le contenu des dossiers 
 Options -Indexes
 
-# SEO : Redirection vers index.php pour les Friendly URLs [cite: 89]
+# SEO : Some SE prefer to read xml 
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# SEO : Redirection vers index.php pour les Friendly URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [L,QSA]
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L,B]
 
-# Sécurité : Bloquer l'accès aux fichiers sensibles [cite: 7, 102]
+
+# Sécurité : Bloquer l'accès aux fichiers sensibles
 <FilesMatch "\.(env|sql|log|ini)$">
     Require all denied
 </FilesMatch>
