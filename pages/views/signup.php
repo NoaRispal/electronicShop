@@ -16,7 +16,7 @@
                 </div>
                 <div class="mb-3">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control" required>
+                    <input type="password" name="password" class="form-control" minlength="8" required>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Create my account</button>
             </form>

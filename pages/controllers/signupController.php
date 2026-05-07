@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $req = "INSERT INTO users (full_name,email, password,role) VALUES (?, ?, ?,?)";
         $ptstmt = $tran->init_request($req);
-        $res = $tran->make_request($ptstmt,$fullname,$email, $hashed_password,"client");
+        $res = $tran->make_request($ptstmt,$fullname,$email, $hashed_password,'customer');
         
         
         if ($res) {

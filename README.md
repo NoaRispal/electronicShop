@@ -38,6 +38,16 @@ http://localhost/electronicShop
 ```
 ---
 
+## 4. Demo Credentials
+
+To login on the website you can use the following demo credentials
+
+```txt
+admin@example.com / admin123
+john.doe@example.com / johndoe123
+```
+---
+
 ## Key Features
 
 ### Layout & Responsive Design
