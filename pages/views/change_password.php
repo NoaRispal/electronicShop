@@ -8,7 +8,7 @@
                     <form action="<?php echo BASE_URL; ?>update_password" method="POST">
                         <div class="mb-3">
                             <label>New Password</label>
-                            <input type="password" name="new_password" class="form-control" required minlength="6">
+                            <input type="password" name="new_password" class="form-control" required minlength="8">
                         </div>
                         <button type="submit" class="btn btn-warning w-100">Update Password</button>
                     </form>

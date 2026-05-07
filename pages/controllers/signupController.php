@@ -23,9 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         
         if ($res) {
-            $message = "Account created! <a href='login.php'>Log In Here</a>";
+            $_SESSION['flash'] = "Account created!";
+            $_SESSION['flash_type'] = "success";
+            header("Location: ".BASE_URL."signin");
         } else {
-            $message = "Error : This email is already used.";
+            $_SESSION['flash'] =  "Error : This email is already used.";
+            $_SESSION['flash_type'] = "danger";
+            header("Location: ".BASE_URL."register");
         }
     }
 }

@@ -77,8 +77,7 @@
                     <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>contact">Contact</a></li>
                 </ul>
                 <!-- Search bar  -->
-                <form class="d-flex order-2 order-md-1 position-relative w-50" method="get" autocomplete="off">
-                    <input type="hidden" name="page" value="products"> <!-- for page=products in the URL --> 
+                <form class="d-flex order-2 order-md-1 position-relative w-50" action="<?= BASE_URL ?>products" method="get" autocomplete="off">
                     <input name="search" class="searchInput form-control me-sm-2 text-dark" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-light" type="submit">Search</button>
                     

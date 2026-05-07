@@ -15,7 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['reset_user_id'])) {
     $tran->close();
 
     unset($_SESSION['reset_user_id']);
-    header("Location: ".BASE_URL."signin&reset=success");
+    $_SESSION['flash'] = "Password changed successfully!";
+    $_SESSION['flash_type'] = "success";
+    header("Location: ".BASE_URL."signin");
     exit();
 }
 

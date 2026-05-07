@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <h3 class="card-title text-center">Reset Password</h3>
                     <p class="text-muted text-center">Enter your email to reset your account password.</p>
-                    <?php if($error) echo "<div class='alert alert-danger'>$error</div>";?>
+                    <?php if(isset($error)) echo "<div class='alert alert-danger'>$error</div>";?>
                     
                     <form action="<?php echo BASE_URL; ?>reset_request" method="POST">
                         <div class="mb-3">

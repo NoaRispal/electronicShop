@@ -4,7 +4,6 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
             <h2 class="text-center">Inscription</h2>
-            <?php if($message) echo "<div class='alert alert-info'>$message</div>"; ?>
             <form method="POST" action="<?php echo BASE_URL; ?>register">
                 <div class="mb-3">
                     <label>Full name</label>
