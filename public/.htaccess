@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /electronicWebsiteProject/public/
+RewriteBase /electronicShop/public/
 
 # Sécurité : Empêche de lister le contenu des dossiers 
 Options -Indexes
